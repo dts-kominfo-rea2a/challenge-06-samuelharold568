@@ -19,12 +19,15 @@ let modifyFile3 = (val) => {
 // TODO: Kerjakan bacaData
 // gunakan variabel file1, file2, dan file3
 const bacaData = (fnCallback) => {
+  let array1;
+  let array2;
+  let array3;
   fs.readFile(file1, 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       return;
     }
-    fnCallback = data;
+    array1= data;
     console.log(fnCallback)
   });
 
@@ -33,7 +36,7 @@ const bacaData = (fnCallback) => {
       console.error(err);
       return;
     }
-    fnCallback = data;
+    array2 = data;
     console.log(fnCallback)
   });
 
@@ -42,10 +45,11 @@ const bacaData = (fnCallback) => {
       console.error(err);
       return;
     }
-    fnCallback = data;
+    array3 = data[];
     console.log(fnCallback)
   });
   
+  fnCallback.join(array1, array2, array3);
 };
 
 
