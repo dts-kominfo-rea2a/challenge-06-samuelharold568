@@ -45,7 +45,7 @@ const bacaData = (fnCallback) => {
       console.error(err);
       return;
     }
-    array3 = data[];
+    array3 = data;
     console.log(fnCallback)
   });
   
