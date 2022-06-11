@@ -18,36 +18,55 @@ let modifyFile3 = (val) => {
 
 // TODO: Kerjakan bacaData
 // gunakan variabel file1, file2, dan file3
-const bacaData = (fnCallback) => {
-  fnCallback = [];
-  fs.readFile(file1, 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    const dataResult = JSON.parse(data)
-      fnCallback.push(dataResult.message.split(" ")[1])
-  });
+const bacaData = (fnCallBack) => {
+  let resultArray = []
 
-  fs.readFile(file2, 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
+  fs.readFile(
+    file1, 
+    {
+      encoding : "utf8"
+    },
+    (err, data)=> {
+      if (err) {
+        return fnCallBack(err, null);
+      }
+      
+      const dataResult = JSON.parse(data)
+      resultArray.push(dataResult.message.split(" ")[1])
     }
-    const dataResult = JSON.parse(data)
-      fnCallback.push(dataResult[0].message.split(" ")[1])
-  });
+  )
 
-  fs.readFile(file3, 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
+  fs.readFile(
+    file2, 
+    {
+      encoding : "utf8"
+    },
+    (err, data)=> {
+      if (err) {
+        return fnCallBack(err, null);
+      }
+
+      const dataResult = JSON.parse(data)
+      resultArray.push(dataResult[0].message.split(" ")[1])
     }
-    const dataResult = JSON.parse(data)
-      fnCallback.push(dataResult[0].data.message.split(" ")[1])
-  });
+  )
 
-};
+  fs.readFile(
+    file3, 
+    {
+      encoding : "utf8"
+    },
+    (err, data)=> {
+      if (err) {
+        return fnCallBack(err, null);
+      }
+
+      const dataResult = JSON.parse(data)
+      resultArray.push(dataResult[0].data.message.split(" ")[1])
+      fnCallBack(null, resultArray)
+    }
+  )
+}
 
 
 // ! JANGAN DIMODIFIKASI
