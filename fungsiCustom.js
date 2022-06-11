@@ -19,7 +19,7 @@ let modifyFile3 = (val) => {
 // TODO: Kerjakan bacaData
 // gunakan variabel file1, file2, dan file3
 const bacaData = (fnCallback) => {
-
+  fnCallback = [];
   fs.readFile(file1, 'utf8', (err, data) => {
     if (err) {
       console.error(err);
@@ -46,8 +46,7 @@ const bacaData = (fnCallback) => {
     const dataResult = JSON.parse(data)
       fnCallback.push(dataResult[0].data.message.split(" ")[1])
   });
-  
-  fnCallback.join();
+
 };
 
 
